@@ -1,0 +1,9 @@
+# Ignore everything
+*
+
+# Except the contracts folder and all its contents
+!contracts/
+!contracts/**
+
+# Keep .gitignore itself tracked
+!.gitignore
