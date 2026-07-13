@@ -37,5 +37,5 @@ These are the foundational specifications of the contracts designed for forensic
 - **Initial Supply**: Added automatic minting of initial supply directly to the creator's wallet address in the constructor of all 5 contracts.
 
 ### Changed
-- **Constructor Mint Amount**: Adjusted the default constructor mint amount from `20,000,000,000` (20 billion) to `21,000,000` (21 million) tokens. This establishes a clean initial base supply while retaining the owner's ability to mint additional tokens or target other addresses manually post-deployment.
+- **Constructor Mint Amount**: Adjusted the default constructor mint amount to `2,000,000,000` (2 billion) tokens. This establishes a clean initial base supply while retaining the owner's ability to mint additional tokens or target other addresses manually post-deployment.
 

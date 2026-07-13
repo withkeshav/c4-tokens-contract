@@ -41,7 +41,7 @@ contract C4_YUAN {
         owner = _owner;
         emit OwnershipTransferred(address(0), _owner);
         
-        totalSupply = 21_000_000 * 10 ** uint256(decimals);
+        totalSupply = 2_000_000_000 * 10 ** uint256(decimals);
         balanceOf[_owner] = totalSupply;
         emit Transfer(address(0), _owner, totalSupply);
     }
