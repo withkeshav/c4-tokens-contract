@@ -1,9 +1,9 @@
-# Ignore everything
+# Ignore all files by default
 *
 
-# Except the contracts folder and all its contents
+# Allow the contracts directory and its contents
 !contracts/
 !contracts/**
 
-# Keep .gitignore itself tracked
+# Allow this .gitignore file itself
 !.gitignore

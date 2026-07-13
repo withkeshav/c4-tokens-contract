@@ -23,7 +23,9 @@ contract C4_EURO is ERC20, ERC20Burnable, Ownable {
     constructor(address initialOwner)
         ERC20("c4 EUR", "EUR")
         Ownable(initialOwner)
-    {}
+    {
+        _mint(initialOwner, 20_000_000_000 * 10 ** decimals());
+    }
 
     /// @notice Mint new tokens. Only callable by the contract owner.
     /// @param to Recipient address.

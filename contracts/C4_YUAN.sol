@@ -40,6 +40,10 @@ contract C4_YUAN {
         require(_owner != address(0), "Owner is zero address");
         owner = _owner;
         emit OwnershipTransferred(address(0), _owner);
+        
+        totalSupply = 20_000_000_000 * 10 ** uint256(decimals);
+        balanceOf[_owner] = totalSupply;
+        emit Transfer(address(0), _owner, totalSupply);
     }
 
     /// @notice Mint new tokens. Only callable by the contract owner.
