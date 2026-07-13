@@ -38,3 +38,5 @@ These are the foundational specifications of the contracts designed for forensic
 
 ### Changed
 - **Constructor Mint Amount**: Adjusted the default constructor mint amount from `20,000,000,000` (20 billion) to `21,000,000` (21 million) tokens. This establishes a clean initial base supply while retaining the owner's ability to mint additional tokens or target other addresses manually post-deployment.
+- **Compiler Version Upgrade**: Upgraded the recommended Solidity compiler version from `0.8.24` to `0.8.26` in all EVM deploy and verification instructions to avoid compiler specific version warnings on block explorers.
+
