@@ -5,5 +5,8 @@
 !contracts/
 !contracts/**
 
+# Allow the CHANGELOG.md file
+!CHANGELOG.md
+
 # Allow this .gitignore file itself
 !.gitignore

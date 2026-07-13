@@ -24,7 +24,7 @@ contract C4_GBP is ERC20, ERC20Burnable, Ownable {
         ERC20("c4 GBP", "GBP")
         Ownable(initialOwner)
     {
-        _mint(initialOwner, 20_000_000_000 * 10 ** decimals());
+        _mint(initialOwner, 21_000_000 * 10 ** decimals());
     }
 
     /// @notice Mint new tokens. Only callable by the contract owner.
