@@ -18,6 +18,7 @@ contract C4_YUAN {
         "Test/practice token for C4 Academy learners. Educational use only. Not a real asset. No monetary value.";
 
     address public owner;
+    bool public paused;
 
     mapping(address => uint256) public balanceOf;
     mapping(address => mapping(address => uint256)) public allowance;
@@ -25,15 +26,36 @@ contract C4_YUAN {
     event Transfer(address indexed from, address indexed to, uint256 value);
     event Approval(address indexed owner, address indexed spender, uint256 value);
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+    event Paused(address account);
+    event Unpaused(address account);
 
     modifier onlyOwner() {
         require(msg.sender == owner, "Only owner");
         _;
     }
 
+    modifier whenNotPaused() {
+        require(!paused, "Pausable: paused");
+        _;
+    }
+
     /// @notice Returns the on-chain purpose declaration.
     function disclaimer() external pure returns (string memory) {
         return purpose;
+    }
+
+    /// @notice Pause all token transfers, minting, and burning.
+    function pause() external onlyOwner {
+        require(!paused, "Already paused");
+        paused = true;
+        emit Paused(msg.sender);
+    }
+
+    /// @notice Unpause token operations.
+    function unpause() external onlyOwner {
+        require(paused, "Not paused");
+        paused = false;
+        emit Unpaused(msg.sender);
     }
 
     constructor(address _owner) {
@@ -49,7 +71,7 @@ contract C4_YUAN {
     /// @notice Mint new tokens. Only callable by the contract owner.
     /// @param to Recipient address.
     /// @param amount Amount (6 decimals on TRON).
-    function mint(address to, uint256 amount) external onlyOwner {
+    function mint(address to, uint256 amount) external onlyOwner whenNotPaused {
         require(to != address(0), "Mint to zero address");
         totalSupply += amount;
         balanceOf[to] += amount;
@@ -57,7 +79,7 @@ contract C4_YUAN {
     }
 
     /// @notice Burn tokens from caller's balance.
-    function burn(uint256 amount) external {
+    function burn(uint256 amount) external whenNotPaused {
         require(balanceOf[msg.sender] >= amount, "Insufficient balance");
         balanceOf[msg.sender] -= amount;
         totalSupply -= amount;
@@ -72,7 +94,7 @@ contract C4_YUAN {
     }
 
     /// @notice Transfer tokens to another address.
-    function transfer(address to, uint256 amount) external returns (bool) {
+    function transfer(address to, uint256 amount) external whenNotPaused returns (bool) {
         require(to != address(0), "Transfer to zero address");
         require(balanceOf[msg.sender] >= amount, "Insufficient balance");
         balanceOf[msg.sender] -= amount;
@@ -82,7 +104,7 @@ contract C4_YUAN {
     }
 
     /// @notice Transfer tokens on behalf of another address (requires allowance).
-    function transferFrom(address from, address to, uint256 amount) external returns (bool) {
+    function transferFrom(address from, address to, uint256 amount) external whenNotPaused returns (bool) {
         require(to != address(0), "Transfer to zero address");
         require(balanceOf[from] >= amount, "Insufficient balance");
         require(allowance[from][msg.sender] >= amount, "Insufficient allowance");
