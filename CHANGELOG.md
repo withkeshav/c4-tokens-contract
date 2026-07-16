@@ -39,3 +39,17 @@ These are the foundational specifications of the contracts designed for forensic
 ### Changed
 - **Constructor Mint Amount**: Adjusted the default constructor mint amount to `2,000,000,000` (2 billion) tokens. This establishes a clean initial base supply while retaining the owner's ability to mint additional tokens or target other addresses manually post-deployment.
 
+---
+
+## [2026-07-16]
+### Added
+- **Base Contract (`C4_CAD.sol`)**: Added a new ERC-20 token for Base with name `c4 CAD` and ticker `CAD` conforming to OpenZeppelin v5 standards.
+- **Optimism Contract (`C4_SGD.sol`)**: Added a new ERC-20 token for Optimism with name `c4 SGD` and ticker `SGD` conforming to OpenZeppelin v5 standards.
+- **Polygon Contracts (`C4_USD.sol`, `C4_LEARN.sol`)**: Added the exact verified on-chain code matching the live Polygon deployments (ERC20Pausable standard for c4 USD and upgradeable ERC1967Proxy for c4 LEARN).
+- **L2 Deployment Documentation**: Added `base_DEPLOY.md` and `optimism_DEPLOY.md` guides.
+- **GitHub README**: Added a simplified point-to-point README file mapping contracts to their chains and live deployment links.
+
+### Changed
+- **Git Ignoring Config**: Updated `.gitignore` to track the `instructions/` folder, `README.md`, and `agent.md` files while ensuring the local detailed documentation (`README_DETAILED.md`) remains untracked and local.
+
+
