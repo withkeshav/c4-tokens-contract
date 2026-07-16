@@ -43,8 +43,8 @@ These are the foundational specifications of the contracts designed for forensic
 
 ## [2026-07-16]
 ### Added
-- **Base Contract (`C4_CAD.sol`)**: Added a new ERC-20 token for Base with name `c4 CAD` and ticker `CAD` conforming to OpenZeppelin v5 standards.
-- **Optimism Contract (`C4_SGD.sol`)**: Added a new ERC-20 token for Optimism with name `c4 SGD` and ticker `SGD` conforming to OpenZeppelin v5 standards.
+- **Base Contract (`C4_CAD.sol`)**: Added and deployed the ERC-20 token on Base at `0x831490d955a5168f44d104173bfd72573b92efea` with name `c4 CAD` and ticker `CAD`.
+- **Optimism Contract (`C4_SGD.sol`)**: Added and deployed the ERC-20 token on Optimism at `0x831490D955A5168f44d104173BFd72573b92EfeA` with name `c4 SGD` and ticker `SGD`.
 - **Polygon Contracts (`C4_USD.sol`, `C4_LEARN.sol`)**: Added the exact verified on-chain code matching the live Polygon deployments (ERC20Pausable standard for c4 USD and upgradeable ERC1967Proxy for c4 LEARN).
 - **L2 Deployment Documentation**: Added `base_DEPLOY.md` and `optimism_DEPLOY.md` guides.
 - **GitHub README**: Added a simplified point-to-point README file mapping contracts to their chains and live deployment links.
