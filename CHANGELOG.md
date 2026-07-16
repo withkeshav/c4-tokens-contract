@@ -1,4 +1,4 @@
-# Changelog — C4 Academy Test Token Contracts
+# Changelog - C4 Academy Test Token Contracts
 
 All notable changes to the C4 Academy educational test token smart contracts will be documented in this file.
 

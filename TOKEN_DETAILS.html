@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C4 Academy - Educational Test Tokens Registry</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            color: #333;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background-color: #fafafa;
+        }
+        .header {
+            margin-bottom: 25px;
+        }
+        h1 {
+            color: #111;
+            margin: 0 0 10px 0;
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+        .subtitle {
+            font-size: 1rem;
+            color: #666;
+            margin: 0;
+        }
+        .meta-info {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 5px;
+        }
+        .warning-box {
+            background-color: #fffde7;
+            border-left: 5px solid #fbc02d;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+        .warning-box h4 {
+            margin: 0 0 5px 0;
+            color: #f57f17;
+            font-size: 1.05rem;
+        }
+        .warning-box p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #5d4037;
+        }
+        .table-container {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            overflow-x: auto;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            margin-bottom: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        th, td {
+            padding: 12px 16px;
+            font-size: 0.88rem;
+            border-bottom: 1px solid #f0f0f0;
+            white-space: nowrap;
+        }
+        th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: #495057;
+            border-bottom: 2px solid #e9ecef;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr:hover {
+            background-color: #fafafa;
+        }
+        a {
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #1557b0;
+        }
+        .code-font {
+            font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+            font-size: 0.8rem;
+            background-color: #f1f3f4;
+            padding: 3px 6px;
+            border-radius: 4px;
+            color: #202124;
+        }
+        a .code-font {
+            color: #1a73e8;
+        }
+        a .code-font:hover {
+            color: #1557b0;
+            background-color: #e8f0fe;
+        }
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .badge-yes {
+            background-color: #e6f4ea;
+            color: #137333;
+        }
+        .badge-no {
+            background-color: #fce8e6;
+            color: #c5221f;
+        }
+        .badge-feature {
+            background-color: #e8f0fe;
+            color: #1a73e8;
+            margin-right: 4px;
+            margin-bottom: 2px;
+        }
+        .badge-pending {
+            background-color: #f1f3f4;
+            color: #5f6368;
+            font-style: italic;
+        }
+        .notes-section {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 24px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+        .notes-section h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.25rem;
+            color: #111;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .notes-section ol {
+            padding-left: 20px;
+            margin: 0;
+        }
+        .notes-section li {
+            margin-bottom: 12px;
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+        .notes-section li strong {
+            color: #202124;
+        }
+
+        /* --- RESPONSIVE / MOBILE LAYOUT --- */
+        @media screen and (max-width: 900px) {
+            body {
+                padding: 15px 10px;
+            }
+            .header h1 {
+                font-size: 1.6rem;
+            }
+            .table-container {
+                border: none;
+                box-shadow: none;
+                background: transparent;
+            }
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            tr {
+                border: 1px solid #e0e0e0;
+                margin-bottom: 20px;
+                background-color: #fff;
+                border-radius: 8px;
+                padding: 8px 12px;
+                box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+            }
+            td {
+                border: none;
+                border-bottom: 1px solid #f5f5f5;
+                position: relative;
+                padding: 12px 8px 12px 40%;
+                text-align: right;
+                white-space: normal;
+                word-break: break-all;
+            }
+            td:last-child {
+                border-bottom: none;
+            }
+            td::before {
+                position: absolute;
+                top: 13px;
+                left: 10px;
+                width: 35%;
+                padding-right: 10px;
+                white-space: nowrap;
+                font-weight: 600;
+                color: #5f6368;
+                text-align: left;
+                content: attr(data-label);
+                font-size: 0.7rem;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+            .code-font {
+                padding: 2px 4px;
+                font-size: 0.78rem;
+            }
+        }
+
+        /* --- PRINT STYLES --- */
+        @media print {
+            body {
+                background-color: #fff;
+                color: #000;
+                padding: 0;
+                font-size: 10pt;
+                max-width: 100%;
+            }
+            .table-container {
+                border: 1px solid #ccc;
+                box-shadow: none;
+                border-radius: 0;
+            }
+            th {
+                background-color: #f5f5f5 !important;
+                border-bottom: 1px solid #ccc;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            td, th {
+                padding: 8px 10px;
+                white-space: nowrap !important;
+                display: table-cell !important;
+            }
+            thead tr {
+                position: static !important;
+            }
+            tr {
+                display: table-row !important;
+                border: none !important;
+                background-color: transparent !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+            }
+            td::before {
+                display: none !important;
+            }
+            .code-font {
+                background: none;
+                padding: 0;
+            }
+            .badge {
+                border: 1px solid #ccc;
+                background: none !important;
+                color: #000 !important;
+                padding: 1px 5px;
+            }
+            .notes-section {
+                border: none;
+                box-shadow: none;
+                padding: 0;
+                margin-top: 30px;
+            }
+            a[href^="http"]:after {
+                content: " (" attr(href) ")";
+                font-size: 80%;
+                color: #555;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>C4 Academy - Educational Test Tokens Registry</h1>
+        <p class="subtitle">Official specifications, live parameters, and blockchain references for training tokens.</p>
+        <div class="meta-info">Last Checked On: <strong>2026-07-16 18:48 UTC</strong></div>
+    </div>
+
+    <div class="warning-box">
+        <h4>Educational Tool Disclaimer</h4>
+        <p>These tokens are developed and deployed on public blockchain mainnets solely for C4 Academy forensic investigation, analysis, and crime training programs. They possess <strong>no real-world monetary value</strong>, and are not intended for investment or commercial transactions.</p>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Token Name</th>
+                    <th>Symbol</th>
+                    <th>Blockchain</th>
+                    <th>Contract Address</th>
+                    <th>Decimals</th>
+                    <th>Live Total Supply<br><span style="font-size: 0.65rem; font-weight: normal; color: #777; text-transform: none; display: block; margin-top: 2px;">As of 2026-07-16</span></th>
+                    <th>Code Link</th>
+                    <th>Features</th>
+                    <th>Upgradeable</th>
+                    <th>Pausable</th>
+                    <th>Owner Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="Token Name"><strong>c4 EUR</strong></td>
+                    <td data-label="Symbol">EUR</td>
+                    <td data-label="Blockchain">Ethereum</td>
+                    <td data-label="Contract Address"><a href="https://etherscan.io/token/0x30d68bf1ee9e26950dfb9a3db5011a869c570836" target="_blank" class="code-font">0x30d68bf1ee9e26950dfb9a3db5011a869c570836</a></td>
+                    <td data-label="Decimals">18</td>
+                    <td data-label="Supply (As of 2026-07-16)"><strong>2,000,000,000</strong></td>
+                    <td data-label="Code Link"><a href="https://github.com/withkeshav/c4-tokens-contract/blob/main/contracts/C4_EURO.sol"><span class="code-font">C4_EURO.sol</span></a></td>
+                    <td data-label="Features"><span class="badge badge-feature">Mintable</span><span class="badge badge-feature">Burnable</span></td>
+                    <td data-label="Upgradeable"><span class="badge badge-no">No</span></td>
+                    <td data-label="Pausable"><span class="badge badge-no">No</span></td>
+                    <td data-label="Owner Address"><a href="https://etherscan.io/address/0xbbef2a6cd69ed7b9f369efeb1a1f8e0032594558" target="_blank" class="code-font">0xbbef2...4558</a></td>
+                </tr>
+                <tr>
+                    <td data-label="Token Name"><strong>c4 GBP</strong></td>
+                    <td data-label="Symbol">GBP</td>
+                    <td data-label="Blockchain">BNB Chain</td>
+                    <td data-label="Contract Address"><a href="https://bscscan.com/token/0x30d68bf1ee9e26950dfb9a3db5011a869c570836" target="_blank" class="code-font">0x30d68bf1ee9e26950dfb9a3db5011a869c570836</a></td>
+                    <td data-label="Decimals">18</td>
+                    <td data-label="Supply (As of 2026-07-16)"><strong>1,520,000,000</strong></td>
+                    <td data-label="Code Link"><a href="https://github.com/withkeshav/c4-tokens-contract/blob/main/contracts/C4_GBP.sol"><span class="code-font">C4_GBP.sol</span></a></td>
+                    <td data-label="Features"><span class="badge badge-feature">Mintable</span><span class="badge badge-feature">Burnable</span></td>
+                    <td data-label="Upgradeable"><span class="badge badge-no">No</span></td>
+                    <td data-label="Pausable"><span class="badge badge-no">No</span></td>
+                    <td data-label="Owner Address"><a href="https://bscscan.com/address/0xbbef2a6cd69ed7b9f369efeb1a1f8e0032594558" target="_blank" class="code-font">0xbbef2...4558</a></td>
+                </tr>
+                <tr>
+                    <td data-label="Token Name"><strong>c4 AUD</strong></td>
+                    <td data-label="Symbol">AUD</td>
+                    <td data-label="Blockchain">Arbitrum</td>
+                    <td data-label="Contract Address"><a href="https://arbiscan.io/token/0x831490d955a5168f44d104173bfd72573b92efea" target="_blank" class="code-font">0x831490d955a5168f44d104173bfd72573b92efea</a></td>
+                    <td data-label="Decimals">18</td>
+                    <td data-label="Supply (As of 2026-07-16)"><strong>2,000,000,000</strong></td>
+                    <td data-label="Code Link"><a href="https://github.com/withkeshav/c4-tokens-contract/blob/main/contracts/C4_AUD.sol"><span class="code-font">C4_AUD.sol</span></a></td>
+                    <td data-label="Features"><span class="badge badge-feature">Mintable</span><span class="badge badge-feature">Burnable</span></td>
+                    <td data-label="Upgradeable"><span class="badge badge-no">No</span></td>
+                    <td data-label="Pausable"><span class="badge badge-no">No</span></td>
+                    <td data-label="Owner Address"><a href="https://arbiscan.io/address/0xbbef2a6cd69ed7b9f369efeb1a1f8e0032594558" target="_blank" class="code-font">0xbbef2...4558</a></td>
+                </tr>
+                <tr>
+                    <td data-label="Token Name"><strong>c4 CAD</strong></td>
+                    <td data-label="Symbol">CAD</td>
+                    <td data-label="Blockchain">Base</td>
+                    <td data-label="Contract Address"><a href="https://basescan.org/token/0x831490d955a5168f44d104173bfd72573b92efea" target="_blank" class="code-font">0x831490d955a5168f44d104173bfd72573b92efea</a></td>
+                    <td data-label="Decimals">18</td>
+                    <td data-label="Supply (As of 2026-07-16)"><strong>2,000,000,000</strong></td>
+                    <td data-label="Code Link"><a href="https://github.com/withkeshav/c4-tokens-contract/blob/main/contracts/C4_CAD.sol"><span class="code-font">C4_CAD.sol</span></a></td>
+                    <td data-label="Features"><span class="badge badge-feature">Mintable</span><span class="badge badge-feature">Burnable</span></td>
+                    <td data-label="Upgradeable"><span class="badge badge-no">No</span></td>
+                    <td data-label="Pausable"><span class="badge badge-no">No</span></td>
+                    <td data-label="Owner Address"><a href="https://basescan.org/address/0xbbef2a6cd69ed7b9f369efeb1a1f8e0032594558" target="_blank" class="code-font">0xbbef2...4558</a></td>
+                </tr>
+                <tr>
+                    <td data-label="Token Name"><strong>c4 CHF</strong></td>
+                    <td data-label="Symbol">CHF</td>
+                    <td data-label="Blockchain">Avalanche</td>
+                    <td data-label="Contract Address"><a href="https://snowtrace.io/token/0x831490D955A5168f44d104173BFd72573b92EfeA" target="_blank" class="code-font">0x831490D955A5168f44d104173BFd72573b92EfeA</a></td>
+                    <td data-label="Decimals">18</td>
+                    <td data-label="Supply (As of 2026-07-16)"><strong>2,000,000,000</strong></td>
+                    <td data-label="Code Link"><a href="https://github.com/withkeshav/c4-tokens-contract/blob/main/contracts/C4_FRANC.sol"><span class="code-font">C4_FRANC.sol</span></a></td>
+                    <td data-label="Features"><span class="badge badge-feature">Mintable</span><span class="badge badge-feature">Burnable</span></td>
+                    <td data-label="Upgradeable"><span class="badge badge-no">No</span></td>
+                    <td data-label="Pausable"><span class="badge badge-no">No</span></td>
+                    <td data-label="Owner Address"><a href="https://snowtrace.io/address/0xbbef2a6cd69ed7b9f369efeb1a1f8e0032594558" target="_blank" class="code-font">0xbbef2...4558</a></td>
+                </tr>
+                <tr>
+                    <td data-label="Token Name"><strong>c4 SGD</strong></td>
+                    <td data-label="Symbol">SGD</td>
+                    <td data-label="Blockchain">Optimism</td>
+                    <td data-label="Contract Address"><a href="https://optimistic.etherscan.io/token/0x831490D955A5168f44d104173BFd72573b92EfeA" target="_blank" class="code-font">0x831490D955A5168f44d104173BFd72573b92EfeA</a></td>
+                    <td data-label="Decimals">18</td>
+                    <td data-label="Supply (As of 2026-07-16)"><strong>2,000,000,000</strong></td>
+                    <td data-label="Code Link"><a href="https://github.com/withkeshav/c4-tokens-contract/blob/main/contracts/C4_SGD.sol"><span class="code-font">C4_SGD.sol</span></a></td>
+                    <td data-label="Features"><span class="badge badge-feature">Mintable</span><span class="badge badge-feature">Burnable</span></td>
+                    <td data-label="Upgradeable"><span class="badge badge-no">No</span></td>
+                    <td data-label="Pausable"><span class="badge badge-no">No</span></td>
+                    <td data-label="Owner Address"><a href="https://optimistic.etherscan.io/address/0xbbef2a6cd69ed7b9f369efeb1a1f8e0032594558" target="_blank" class="code-font">0xbbef2...4558</a></td>
+                </tr>
+                <tr>
+                    <td data-label="Token Name"><strong>c4 USD</strong></td>
+                    <td data-label="Symbol">USD</td>
+                    <td data-label="Blockchain">Polygon</td>
+                    <td data-label="Contract Address"><a href="https://polygonscan.com/token/0x831490D955A5168f44d104173BFd72573b92EfeA" target="_blank" class="code-font">0x831490D955A5168f44d104173BFd72573b92EfeA</a></td>
+                    <td data-label="Decimals">18</td>
+                    <td data-label="Supply (As of 2026-07-16)"><strong>1,100,000,750,000</strong></td>
+                    <td data-label="Code Link"><a href="https://github.com/withkeshav/c4-tokens-contract/blob/main/contracts/C4_USD.sol"><span class="code-font">C4_USD.sol</span></a></td>
+                    <td data-label="Features"><span class="badge badge-feature">Mintable</span><span class="badge badge-feature">Pausable</span></td>
+                    <td data-label="Upgradeable"><span class="badge badge-no">No</span></td>
+                    <td data-label="Pausable"><span class="badge badge-yes">Yes</span></td>
+                    <td data-label="Owner Address"><a href="https://polygonscan.com/address/0xbbef2a6cd69ed7b9f369efeb1a1f8e0032594558" target="_blank" class="code-font">0xbbef2...4558</a></td>
+                </tr>
+                <tr>
+                    <td data-label="Token Name"><strong>c4 JPY</strong></td>
+                    <td data-label="Symbol">JPY</td>
+                    <td data-label="Blockchain">Polygon</td>
+                    <td data-label="Contract Address"><a href="https://polygonscan.com/token/0x03cefcEa1d1Ae9Dca0eF0De2FDbE50B4b116E747" target="_blank" class="code-font">0x03cefcEa1d1Ae9Dca0eF0De2FDbE50B4b116E747</a></td>
+                    <td data-label="Decimals">2</td>
+                    <td data-label="Supply (As of 2026-07-16)"><strong>1,001,000,000,000</strong></td>
+                    <td data-label="Code Link"><span class="badge badge-pending">Not in Repo</span></td>
+                    <td data-label="Features"><span class="badge badge-feature">Mintable</span><span class="badge badge-feature">Pausable</span></td>
+                    <td data-label="Upgradeable"><span class="badge badge-yes">Yes</span></td>
+                    <td data-label="Pausable"><span class="badge badge-yes">Yes</span></td>
+                    <td data-label="Owner Address"><a href="https://polygonscan.com/address/0x123133dfb0eb3a3df7ac397b6b9a67ca2de65098" target="_blank" class="code-font">0x12313...5098</a></td>
+                </tr>
+                <tr>
+                    <td data-label="Token Name"><strong>c4 LEARN</strong></td>
+                    <td data-label="Symbol">LEARN</td>
+                    <td data-label="Blockchain">Polygon</td>
+                    <td data-label="Contract Address"><a href="https://polygonscan.com/token/0x5C1874bcb8Dc2b581B4Ee2776A5A32a44ea2881B" target="_blank" class="code-font">0x5C1874bcb8Dc2b581B4Ee2776A5A32a44ea2881B</a></td>
+                    <td data-label="Decimals">4</td>
+                    <td data-label="Supply (As of 2026-07-16)"><strong>21,000,000</strong></td>
+                    <td data-label="Code Link"><a href="https://github.com/withkeshav/c4-tokens-contract/blob/main/contracts/C4_LEARN.sol"><span class="code-font">C4_LEARN.sol</span></a></td>
+                    <td data-label="Features"><span class="badge badge-feature">Mintable</span><span class="badge badge-feature">Pausable</span></td>
+                    <td data-label="Upgradeable"><span class="badge badge-yes">Yes</span></td>
+                    <td data-label="Pausable"><span class="badge badge-yes">Yes</span></td>
+                    <td data-label="Owner Address"><a href="https://polygonscan.com/address/0xbbef2a6cd69ed7b9f369efeb1a1f8e0032594558" target="_blank" class="code-font">0xbbef2...4558</a></td>
+                </tr>
+                <tr>
+                    <td data-label="Token Name"><strong>c4 CNY</strong></td>
+                    <td data-label="Symbol">CNY</td>
+                    <td data-label="Blockchain">TRON</td>
+                    <td data-label="Contract Address"><span class="badge badge-pending">Pending Deployment</span></td>
+                    <td data-label="Decimals">6</td>
+                    <td data-label="Supply (As of 2026-07-16)"><em>N/A</em></td>
+                    <td data-label="Code Link"><a href="https://github.com/withkeshav/c4-tokens-contract/blob/main/contracts/C4_YUAN.sol"><span class="code-font">C4_YUAN.sol</span></a></td>
+                    <td data-label="Features"><span class="badge badge-feature">Mintable</span><span class="badge badge-feature">Burnable</span></td>
+                    <td data-label="Upgradeable"><span class="badge badge-no">No</span></td>
+                    <td data-label="Pausable"><span class="badge badge-no">No</span></td>
+                    <td data-label="Owner Address"><em>N/A</em></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="notes-section">
+        <h3>Technical Verification Notes</h3>
+        <ol>
+            <li>
+                <strong>Shared Address Mechanism:</strong> 
+                The contract addresses on Arbitrum (c4 AUD), Base (c4 CAD), Avalanche (c4 CHF), Optimism (c4 SGD), and Polygon (c4 USD) are identical (<code>0x831490d955a5168f44d104173bfd72573b92efea</code>) as they were deployed from the same creator key using identical transactional parameters. Similarly, Ethereum (c4 EUR) and BNB Chain (c4 GBP) share the address <code>0x30d68bf1ee9e26950dfb9a3db5011a869c570836</code>.
+            </li>
+            <li>
+                <strong>Dynamic Total Supplies:</strong> 
+                Every deployed token contains a public <code>mint</code> method restricted to the contract owner. Consequently, supplies will shift over time during forensics training courses. For instance, <code>c4 USD</code> (Polygon) now stands at <strong>1.1 trillion</strong> due to secondary issuance.
+            </li>
+            <li>
+                <strong>Upgradeable Contract Design:</strong> 
+                The <code>c4 LEARN</code> and <code>c4 JPY</code> tokens utilize the <strong>EIP-1967 Upgradeability Proxy</strong> pattern. <code>c4 LEARN</code> points to the implementation at <code>0x30d68bf1ee9e26950dfb9a3db5011a869c570836</code>, and <code>c4 JPY</code> points to the implementation at <code>0x8a2d771cc2725b68e5007fcedd0aea6b848e35eb</code>.
+            </li>
+            <li>
+                <strong>Non-Standard Decimals:</strong> 
+                Unlike conventional ERC-20s that default to 18 decimals, <code>c4 JPY</code> utilizes <strong>2 decimals</strong>, <code>c4 LEARN</code> uses <strong>4 decimals</strong>, and the TRON-based <code>c4 CNY</code> uses <strong>6 decimals</strong>.
+            </li>
+        </ol>
+    </div>
+
+</body>
+</html>

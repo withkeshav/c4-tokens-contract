@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: MIT
-// C4 Academy — EDUCATIONAL TEST TOKEN. Not a real asset. Crypto-forensics training only.
+// C4 Academy - EDUCATIONAL TEST TOKEN. Not a real asset. Crypto-forensics training only.
 pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-/// @title c4 AUD — Educational Test Token on Arbitrum
+/// @title c4 AUD - Educational Test Token on Arbitrum
 /// @notice ERC-20 test token for C4 Academy crypto-forensics training.
 /// @dev Deployed on Arbitrum One mainnet. Mintable by owner only. NOT a real asset.
 contract C4_AUD is ERC20, ERC20Burnable, Ownable {

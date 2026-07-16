@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: MIT
-// C4 Academy — EDUCATIONAL TEST TOKEN. Not a real asset. Crypto-forensics training only.
+// C4 Academy - EDUCATIONAL TEST TOKEN. Not a real asset. Crypto-forensics training only.
 pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-/// @title c4 CHF — Educational Test Token on Avalanche
+/// @title c4 CHF - Educational Test Token on Avalanche
 /// @notice ERC-20 test token for C4 Academy crypto-forensics training.
 /// @dev Deployed on Avalanche C-Chain mainnet. Mintable by owner only. NOT a real asset.
 contract C4_FRANC is ERC20, ERC20Burnable, Ownable {

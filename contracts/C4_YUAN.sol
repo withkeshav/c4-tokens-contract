@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
-// C4 Academy — EDUCATIONAL TEST TOKEN. Not a real asset. Crypto-forensics training only.
+// C4 Academy - EDUCATIONAL TEST TOKEN. Not a real asset. Crypto-forensics training only.
 pragma solidity ^0.8.18;
 
-/// @title c4 CNY — Educational Test Token on TRON (TRC-20)
+/// @title c4 CNY - Educational Test Token on TRON (TRC-20)
 /// @notice TRC-20 (ERC-20 compatible) test token for C4 Academy crypto-forensics training.
 /// @dev Deployed on TRON mainnet. Mintable by owner only. NOT a real asset.
 /// @dev TRON convention: 6 decimals. Addresses start with 'T' (base58).

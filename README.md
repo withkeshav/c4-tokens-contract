@@ -1,4 +1,4 @@
-# C4 Academy — Educational Test Token Contracts
+# C4 Academy - Educational Test Token Contracts
 
 *   **Ethereum (c4 EUR)**: [0x30d68bf1ee9e26950dfb9a3db5011a869c570836](https://etherscan.io/token/0x30d68bf1ee9e26950dfb9a3db5011a869c570836)
 *   **BNB Chain (c4 GBP)**: [0x30d68bf1ee9e26950dfb9a3db5011a869c570836](https://bscscan.com/token/0x30d68bf1ee9e26950dfb9a3db5011a869c570836)

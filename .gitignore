@@ -8,6 +8,7 @@
 # Allow CHANGELOG.md and the simplified README.md
 !CHANGELOG.md
 !README.md
+!TOKEN_DETAILS.html
 
 # Allow this .gitignore file itself
 !.gitignore
