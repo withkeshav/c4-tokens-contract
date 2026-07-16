@@ -5,7 +5,7 @@
 *   **Arbitrum (c4 AUD)**: [0x831490d955a5168f44d104173bfd72573b92efea](https://arbiscan.io/token/0x831490d955a5168f44d104173bfd72573b92efea)
 *   **Polygon (c4 USD)**: [0x831490D955A5168f44d104173BFd72573b92EfeA](https://polygonscan.com/token/0x831490D955A5168f44d104173BFd72573b92EfeA) (Contract: `contracts/C4_USD.sol`)
 *   **Polygon (c4 LEARN)**: [0x5C1874bcb8Dc2b581B4Ee2776A5A32a44ea2881B](https://polygonscan.com/token/0x5C1874bcb8Dc2b581B4Ee2776A5A32a44ea2881B) (Contract: `contracts/C4_LEARN.sol`)
-*   **Avalanche (c4 CHF)**: Pending Deployment (Contract: `contracts/C4_FRANC.sol`)
+*   **Avalanche (c4 CHF)**: [0x831490D955A5168f44d104173BFd72573b92EfeA](https://snowtrace.io/token/0x831490D955A5168f44d104173BFd72573b92EfeA) (Contract: `contracts/C4_FRANC.sol`)
 *   **Base (c4 CAD)**: [0x831490d955a5168f44d104173bfd72573b92efea](https://basescan.org/token/0x831490d955a5168f44d104173bfd72573b92efea) (Contract: `contracts/C4_CAD.sol`)
 *   **Optimism (c4 SGD)**: [0x831490D955A5168f44d104173BFd72573b92EfeA](https://optimistic.etherscan.io/token/0x831490D955A5168f44d104173BFd72573b92EfeA) (Contract: `contracts/C4_SGD.sol`)
 *   **TRON (c4 CNY)**: Pending Deployment (Contract: `contracts/C4_YUAN.sol`)
